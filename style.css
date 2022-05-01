@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&family=Merriweather:ital,wght@0,700;0,900;1,900&family=Press+Start+2P&display=swap');
+
+:root {
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+  }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(./dice-g6ad7ba79a_1920.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    max-width: 100%;
+    height: 1000px;
+}
+
+
+.maincontainer{
+    position: absolute;
+    width: 700px;
+    height: 800px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.904) 0px 19px 50px, rgba(0, 0, 0, 0.753) 0px 50px 100px;
+
+    background: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.card{
+
+    position: relative;
+    width: 600px;
+    height: 700px;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+    box-shadow: inset 0 0 1em 0 var(--clr-neon), 0 0 3em 0 var(--clr-neon);
+border-radius: 30px;
+    background: none;
+margin: auto;
+top: 5%;
+}
+
+.front{
+    border-radius: 30px;
+position: absolute;
+ width: 100%; 
+ height: 100%;
+ backface-visibility: hidden;
+    background-color: #10508f84;
+    color: rgb(13, 3, 3);
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 0.5fr 1fr  0.5fr ;
+  grid-template-rows: 50.84px 50.84px 50.84px 300px ;
+  grid-template-areas:
+    ". . . "
+    ". main . "
+    ". . . "
+    ". content2 . "
+    ". content3 . "
+    ". content4 . "
+    ". . . ";
+  grid-gap: 2rem;
+
+  
+}
+#flip-card{
+    grid-area: content3;
+}
+.title{
+    color: white;
+    text-shadow:  2px 2px #FF5DA2 ;
+    line-height: 40px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    grid-area: main;
+    justify-self: center;
+}
+#back{
+    border-radius: 30px;
+position: absolute;
+ width: 100%; 
+ height: 100%;
+ backface-visibility: hidden;
+    background-color: #10508f84;
+    color: rgb(13, 3, 3);
+    display: grid;
+    overflow: hidden;
+    grid-template-columns:  1fr  1fr  1fr  1fr;
+  grid-template-rows: 1px 50.84px 32.84px 50px 250px 70px 70px 1fr ;
+  grid-template-areas:
+    ". . . ."
+    "content1 content1 content2 content2 "
+    "content4 content4 content5 content5 "
+    "content6 content6 content7 content7"
+    ". content3 content3 ."
+    "content8 content8 content8 content8"
+    "content9 content9 content9 content9"
+    ". . . .";
+    gap: 2rem;
+       
+
+  
+
+  
+    transform: rotateY(180deg);
+
+  
+}
+#dice-img, #dice-img2, #dice-img3, #dice-img4, #dice-img5, #dice-img6{
+    background-color: #5dceff90;
+    width: 100%;
+    grid-area: content3;
+    justify-self: center;
+    border-radius: 13%;
+    display: none;
+    transform: scale(0.7, 0.7);
+    transition: 2s;
+}
+.player1, .player2 {
+    color:white;
+text-shadow:  4px 3px #FF5DA2;
+    line-height: 40px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    justify-self: center;
+}
+.player1Score, .player2Score{
+    color:white;
+text-shadow:  4px 3px #FF5DA2;
+    line-height: 40px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    justify-self: center;
+}
+.player1{
+    grid-area: content1;
+}
+.player2{
+    grid-area: content2;
+}
+.player1Score{
+
+    grid-area: content4;
+  
+}
+.player2Score{
+    grid-area: content5;
+ 
+
+}
+.wrap-back{
+    grid-area: content3;
+}
+#roll-btn{
+    grid-area: content8;
+}
+#hold{
+  grid-area: content9;
+}
+.flipCard{
+    transform: rotateY(180deg);
+
+
+}
+.wrap-back{
+    grid-area: content3;
+    display: flex;
+    width: 100%;
+    
+  
+ 
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+}
+/* moving dice--------------------------------- */
+.wrap {
+
+    grid-area: content2;
+    display: flex;
+    width: 100%;
+    
+  
+ 
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+  }
+  
+  .cube {
+      
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+      
+  }
+  
+  .cube img {
+ 
+    width: 200px;
+    background: #84c2ffd3;
+    border: 1px solid #aba;
+    border-radius:28px;
+    position: absolute;
+    opacity: 1;
+  }
+  
+  .cube img:nth-child(1) {
+    transform: rotateY(0deg) translateZ(100px);
+  }
+  .cube img:nth-child(2) {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+  .cube img:nth-child(3) {
+    transform: rotateY(180deg) translateZ(100px);
+  }
+  .cube img:nth-child(4) {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+  .cube img:nth-child(5) {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+  .cube img:nth-child(6) {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  
+  @keyframes loop {
+    from{transform:rotateY(0deg) rotateX(0deg);}
+    to { transform: rotateY(360deg) rotate(360deg)} 
+  }
+  
+  .cube {
+    animation: loop 10s linear infinite;
+  }
+#roll-btn, #hold{
+  justify-self: center;
+
+  width: 500px;
+  font-family: 'Press Start 2P', cursive;
+    border-radius: 30px;
+    color: white;
+    border: 2px solid hsl(317 100% 54%);
+    font-size: 32px;
+    background: none;
+    transition:  1s;
+    text-shadow:  2px 2px #FF5DA2;
+    animation: border-pulsate 2s infinite;
+    /* box-shadow: rgba(108, 17, 102, 0.3) 0px 19px 38px, rgba(163, 16, 16, 0.22) 0px 15px 12px; */
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+}
+  /* button----------------------------------------------- */
+  #flip-card{
+    width: 500px;
+    height: 80px;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 30px;
+    color: white;
+    border: 2px solid hsl(317 100% 54%);
+    font-size: 32px;
+    background: none;
+    transition:  1s;
+    text-shadow:  2px 2px #FF5DA2;
+    animation: border-pulsate 2s infinite;
+    /* box-shadow: rgba(108, 17, 102, 0.3) 0px 19px 38px, rgba(163, 16, 16, 0.22) 0px 15px 12px; */
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+
+}
+#flip-card:hover{
+    height: 80px;
+    box-shadow: none;
+    background-color: #FF5DA2;
+    transition:  1s;
+    animation: border-pulsate-hover 2s infinite;
+    
+}
+#roll-btn:hover, #hold:hover{
+  box-shadow: none;
+  background-color: #FF5DA2;
+  transition:  1s;
+  animation: border-pulsate-hover 2s infinite;
+}
+@keyframes border-pulsate {
+    0%   { color: #FF5DA2; }
+    50% { color: #fffdfe; }
+    100%   { color: #FF5DA2; }
+}
+@keyframes border-pulsate-hover {
+    0%   { color: #5098df }
+    50% { color: #fffdfe; }
+    100%   { color: #5098df; }
+}
+
+.shake {
+    animation: spin2 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translated(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+
+
+  @keyframes spin2 {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+
+  .shake {
+    animation: spin2 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translated(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+
+
+  @keyframes spin2 {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  
+
+
+  .flashing-animation{
+    animation:blinkingText 0.8s infinite;
+  }
+  @keyframes blinkingText{
+    0%{		color: rgb(255, 250, 253);	}
+    49%{	color: transparent;	}
+    50%{	color: transparent;	}
+    99%{	color:transparent;	}
+    100%{	color: rgb(253, 253, 253);	}
+  }
