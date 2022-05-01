@@ -125,13 +125,16 @@ rollBtn.addEventListener("click", () => {
 // })
 
 function win() {
-  if (score >= 20) {
-    scoreDisplay2.textContent = "Winner!";
+  if (score1 >= 6) {
+    player1Title.textContent = "Winner!";
+    player2Title.textContent = "Looser!";
 
     diceFace1.style.display = "none";
     cube.style.display = "grid";
     restartBtn.style.display = "grid";
     rollBtn.style.display = "none";
+  }else{
+
   }
 }
 
