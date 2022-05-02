@@ -97,7 +97,7 @@ rollBtn.addEventListener("click", () => {
           diceFace1.style.display = "inline"
           rollBtn.style.display = "none";
           cube.style.display = "none";
-          restartBtn.style.display = "grid";
+          // restartBtn.style.display = "grid";
           holdBtn.style.display = "none";
         } else {
           player1Title.textContent = "Winner!";
@@ -105,7 +105,7 @@ rollBtn.addEventListener("click", () => {
           diceFace1.style.display = "none"
           rollBtn.style.display = "none";
           cube.style.display = "grid";
-          restartBtn.style.display = "grid";
+          // restartBtn.style.display = "grid";
           holdBtn.style.display = "none";
 
         }
@@ -141,7 +141,7 @@ rollBtn.addEventListener("click", () => {
 });
 
 function win() {
-  if (score1 >= 20) {
+  if (score1 >= 6) {
     player1Title.textContent = "Winner!";
     player2Title.textContent = "Looser!";
     diceFace1.style.display = "none"
@@ -149,7 +149,7 @@ function win() {
     cube.style.display = "grid";
     restartBtn.style.display = "grid";
     holdBtn.style.display = "none";
-  } else if (score2 >= 20) {
+  } else if (score2 >= 6) {
     player1Title.textContent = "Looser!";
     player2Title.textContent = "Winner!";
     diceFace1.style.display = "none"
