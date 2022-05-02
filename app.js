@@ -1,25 +1,31 @@
-const mainContainer = document.querySelector(".maincontainer");
-const flipCardBtn = document.getElementById("flip-card");
-const backCard = document.querySelector("#back");
+
 const player1Title = document.querySelector(".player1");
 const player2Title = document.querySelector(".player2");
 const player1Score = document.querySelector("#player1Score");
 const player2Score = document.querySelector("#player2Score");
 
-const holdBtn = document.querySelector("#hold");
 
-const cube = document.querySelector("#cube-back");
 
-let diceFace1 = document.getElementById("dice-img");
 
 const restartBtn = document.querySelector("#start-again-btn");
 const rollBtn = document.querySelector("#roll-btn");
+const holdBtn = document.querySelector("#hold");
+const flipCardBtn = document.getElementById("flip-card");
+
+
+
+const cube = document.querySelector("#cube-back");
+let diceFace1 = document.getElementById("dice-img");
+
+
 
 let score1 = 0;
 let score2 = 0;
 let turn = 1;
 
 flipCardBtn.addEventListener("click", flipCard);
+holdBtn.addEventListener("click", (playerTurn))
+
 
 function flipCard() {
   card.classList.toggle("flipCard");
@@ -31,17 +37,19 @@ function flipCard() {
   }
 }
 
-holdBtn.addEventListener("click", () => {
+function playerTurn() {
   if (turn == 1) {
     turn = turn + 1;
     player2Title.classList.toggle("flashing-animation");
     player1Title.classList.remove("flashing-animation");
+
   } else if (turn == 2) {
     turn = turn - 1;
     player1Title.classList.toggle("flashing-animation");
     player2Title.classList.remove("flashing-animation");
   }
-});
+}
+
 
 function turns() {
   if (turn == 1) {
@@ -82,13 +90,25 @@ rollBtn.addEventListener("click", () => {
 
     if (cnt == 20) {
       clearInterval(obj);
-      console.log(images[random]);
       if (images[random] == "dice1.png") {
-        scoreDisplay2.textContent = "You lost";
+        if (turn == 1) {
+          player1Title.textContent = "Looser!";
+          player2Title.textContent = "Winner!";
+          diceFace1.style.display = "inline"
+          rollBtn.style.display = "none";
+          cube.style.display = "none";
+          restartBtn.style.display = "grid";
+          holdBtn.style.display = "none";
+        } else {
+          player1Title.textContent = "Winner!";
+          player2Title.textContent = "Looser!";
+          diceFace1.style.display = "none"
+          rollBtn.style.display = "none";
+          cube.style.display = "grid";
+          restartBtn.style.display = "grid";
+          holdBtn.style.display = "none";
 
-        diceFace1.style.display = "grid";
-        scoreDisplay.style.display = "none";
-        rollBtn.style.display = "none";
+        }
 
         setTimeout(function () {
           diceFace1.style.display = "none";
@@ -120,34 +140,41 @@ rollBtn.addEventListener("click", () => {
   }
 });
 
-// restartBtn.addEventListener("click", () => {
-//     window.location.reload()
-// })
-
 function win() {
-  if (score1 >= 6) {
+  if (score1 >= 20) {
     player1Title.textContent = "Winner!";
     player2Title.textContent = "Looser!";
-
-    diceFace1.style.display = "none";
+    diceFace1.style.display = "none"
+    rollBtn.style.display = "none";
     cube.style.display = "grid";
     restartBtn.style.display = "grid";
+    holdBtn.style.display = "none";
+  } else if (score2 >= 20) {
+    player1Title.textContent = "Looser!";
+    player2Title.textContent = "Winner!";
+    diceFace1.style.display = "none"
     rollBtn.style.display = "none";
-  }else{
+    cube.style.display = "grid";
+    restartBtn.style.display = "grid";
+    holdBtn.style.display = "none";
+
 
   }
 }
 
-// rollBtn.addEventListener("click", shake);
-// function shake(){
-//   backCard.classList.remove("shake"); // reset animation
-//   void backCard.offsetWidth; // trigger reflow
-//   backCard.classList.add("shake"); // start animation
-// }
+restartBtn.addEventListener("click", () => {
+  score1 = 0;
+  score2 = 0;
+  player1Score.textContent = score1;
+  player2Score.textContent = score2;
+  player1Title.textContent = "Player1";
+  player2Title.textContent = "Player2";
+  diceFace1.style.display = "none"
+  rollBtn.style.display = "inline";
+  holdBtn.style.display = "inline";
+  restartBtn.style.display = "none";
+  if (turn == 2) {
+    playerTurn()
+  }
 
-// function shadowBox(){
-//     mainContainer.style.boxShadow= "box-shadow: rgba(0, 0, 0, 0.904) 0px 19px 50px, rgba(0, 0, 0, 0.753) 0px 50px 100px"
-// }
-
-// const timerID= setInterval(shadowBox, 3000)
-// clearInterval(shadowBox)
+})

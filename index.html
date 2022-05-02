@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
-    
-
-     
       <div class="card" id="card">
         <div class="front">
 
@@ -30,7 +26,7 @@
          
           <button id="flip-card">Start game</button>
           </div>
-          <div class="back" id="back" >
+          <div id="back" >
             <div class="wrap-back" >
               <div class="cube"  id="cube-back">
                 <img src="./Images/dice/dice5.png" alt="">
@@ -43,8 +39,8 @@
             </div>
             <div class="player1">Player1</div>
             <div class="player2">Player2</div>
-            <div class="player1Score">Score:<span id="player1Score"></span></div>
-            <div class="player2Score">Score:<span id="player2Score"></span></div>
+            <div class="player1Score">Score:<span id="player1Score">0</span></div>
+            <div class="player2Score">Score:<span id="player2Score">0</span></div>
 
             <img id="dice-img" class="dice-roll-img" src="./Images/dice/dice1.png" alt="" srcset="">
  <img id="dice-img2" class="dice-roll-img" src="./Images/dice/dice2.png" alt="" srcset="">
@@ -54,6 +50,7 @@
  <img id="dice-img6" class="dice-roll-img" src="./Images/dice/dice6.png" alt="" srcset="">
  <button type="text" id="roll-btn">Roll</button>
 <button type="text" id="hold" >Hold</button>
+<button type="reset" id="start-again-btn" >Start again</button>
           </div>
       </div>
     <script src="./app.js"></script>
